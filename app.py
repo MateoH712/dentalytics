@@ -26,7 +26,7 @@ modelTree,modelKnn, modelNN, modelSVM, labelencoder,variables,min_max_scaler = p
 data_preparada=data.copy()
 
 data_preparada = pd.get_dummies(data_preparada, columns=['Canal preferido'], drop_first=False)
-data_preparada = pd.get_dummies(data_preparada, columns=['Cat preferida'], drop_first=False) #En despliegue no se borran dummies
+data_preparada= pd.get_dummies(data_preparada, columns=['Cat preferida'], drop_first=False) #En despliegue no se borran dummies
 data_preparada.head()
 
 #Se adicionan las columnas faltantes
@@ -89,5 +89,6 @@ Cat_preferida = st.selectbox('Cat preferida', ['Acrilicos y flexibles', 'blanque
 
 #dataframe
 datos =[[Canal_preferido,Ticket_promedio,Acrilicos_y_flexibles, Blanqueamientos_y_profilaxis, Dientes, Equipos_y_accesorios, Higiene_diaria, Impresiones_y_vaciado,Instrumental_e_insumos,Ortodoncia, Restauracion,Laboratorio, discos_y_pulidos,Desechables_y_desinfeccion, Especializacion, Cat_preferida]]
-data = pd.DataFrame(datos, columns=['Canal_preferido','Ticket_promedio', 'Acrilicos_y_flexibles', 'Blanqueamientos_y_profilaxis', 'Dientes', 'Equipos_y_accesorios', 'Higiene_diaria', 'Impresiones_y_vaciado', 'Instrumental_e_insumos', 'Ortodoncia', 'Restauracion', 'Laboratorio', 'discos_y_pulidos', 'Desechables_y_desinfeccion' , 'Especializacion', 'Cat_preferida'])
+column_names = ['Canal_preferido', 'Ticket_promedio', 'Acrilicos_y_flexibles', 'Blanqueamientos_y_profilaxis', 'Dientes', 'Equipos_y_accesorios', 'Higiene_diaria', 'Impresiones_y_vaciado', 'Instrumental_e_insumos', 'Ortodoncia', 'Restauracion', 'Laboratorio', 'discos_y_pulidos', 'Desechables_y_desinfeccion', 'Especializacion', 'Cat_preferida']
+data = pd.DataFrame(datos, columns=column_names)
 
