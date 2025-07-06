@@ -28,7 +28,7 @@ import streamlit as st
 
 st.title('Prediccion tipo de cliente Rapident')
 Canal_preferido = st.selectbox('Canal preferido', ['Ventas digitales', 'Punto de venta'])
-Ticket_promedio = st.number_input('Ticket promedio', min_value=14, max_value=52, value=20, step=1)
+Ticket_promedio = st.number_input('Ticket promedio', min_value=2000, max_value=8500000, value=100000, step=1)
 Acrilicos_y_flexibles = st.selectbox('Acrilicos y flexibles', ['0', '1'])
 Blanqueamientos_y_profilaxis = st.selectbox('Blanqueamientos y profilaxis', ['0', '1'])
 Dientes = st.selectbox('Dientes', ['0', '1'])
