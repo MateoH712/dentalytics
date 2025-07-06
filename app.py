@@ -23,8 +23,6 @@ modelTree,modelKnn, modelNN, modelSVM, labelencoder,variables,min_max_scaler = p
 #data.head()
 
 #Se realiza la preparación
-data_preparada=data.copy()
-
 data_preparada = pd.get_dummies(data_preparada, columns=['Canal preferido'], drop_first=False)
 data_preparada= pd.get_dummies(data_preparada, columns=['Cat preferida'], drop_first=False) #En despliegue no se borran dummies
 data_preparada.head()
