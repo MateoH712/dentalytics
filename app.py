@@ -19,24 +19,17 @@ filename = 'modelo.pkl'
 modelTree,modelKnn, modelNN, modelSVM, labelencoder,variables,min_max_scaler = pickle.load(open(filename, 'rb'))
 
 #Cargamos los datos futuros
-#data = pd.read_excel("Clientes_dentalyticsfuturos.xlsx")
-#data.head()
+data = pd.read_excel("Clientes_dentalyticsfuturos.xlsx")
+data.head()
 
 #Se realiza la preparación
-data_preparada = pd.get_dummies(data_preparada, columns=['Canal preferido'], drop_first=False)
+data_preparada = pd.get_dummies(data, columns=['Canal preferido'], drop_first=False)
 data_preparada= pd.get_dummies(data_preparada, columns=['Cat preferida'], drop_first=False) #En despliegue no se borran dummies
 data_preparada.head()
 
 #Se adicionan las columnas faltantes
 data_preparada=data_preparada.reindex(columns=variables,fill_value=0)
 data_preparada.head()
-
-#hacemos la prediccion con el tree
-Y_fut =modelTree.predict(data_preparada)
-print(Y_fut)
-
-data['Tree']=labelencoder.inverse_transform(Y_fut)
-data.head()
 
 data_preparada[['Ticket promedio']]=min_max_scaler.transform(data_preparada[['Ticket promedio']])
 data_preparada.head()
