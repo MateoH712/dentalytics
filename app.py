@@ -56,8 +56,9 @@ column_names = ['Canal_preferido', 'Ticket_promedio', 'Acrilicos_y_flexibles', '
 data = pd.DataFrame(datos, columns=column_names)
 
 #Se realiza la preparación
-data_preparada = pd.get_dummies(data_preparada, columns=['Canal preferido'], drop_first=False)
-data_preparada= pd.get_dummies(data_preparada, columns=['Cat preferida'], drop_first=False) #En despliegue no se borran dummies
+data_preparada =data.copy()
+data_preparada = pd.get_dummies(data_preparada, columns=['Canal_preferido'], drop_first=False)
+data_preparada = pd.get_dummies(data_preparada, columns=['Cat_preferida'], drop_first=False) #En despliegue no se borran dummies
 data_preparada.head()
 
 #Se adicionan las columnas faltantes
