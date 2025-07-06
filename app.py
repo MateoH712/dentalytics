@@ -22,37 +22,9 @@ modelTree,modelKnn, modelNN, modelSVM, labelencoder,variables,min_max_scaler = p
 #data = pd.read_excel("Clientes_dentalyticsfuturos.xlsx")
 #data.head()
 
-#Se realiza la preparación
-data_preparada = pd.get_dummies(data, columns=['Canal preferido'], drop_first=False)
-data_preparada= pd.get_dummies(data_preparada, columns=['Cat preferida'], drop_first=False) #En despliegue no se borran dummies
-data_preparada.head()
-
-#Se adicionan las columnas faltantes
-data_preparada=data_preparada.reindex(columns=variables,fill_value=0)
-data_preparada.head()
-
-data_preparada[['Ticket promedio']]=min_max_scaler.transform(data_preparada[['Ticket promedio']])
-data_preparada.head()
-
-#Hacemos la predicción con Knn
-Y_fut = modelKnn.predict(data_preparada)
-data['Knn']=labelencoder.inverse_transform(Y_fut)
-data.head()
-
-#Hacemos la predicción con Red Neuronal
-Y_fut = modelNN.predict(data_preparada)
-data['Neural_Network']=labelencoder.inverse_transform(Y_fut)
-data.head()
-
-#Hacemos la predicción con SVM
-Y_fut = modelSVM.predict(data_preparada)
-data['SVM']=labelencoder.inverse_transform(Y_fut)
-data
-
 #Se crea interfaz gráfica con streamlit para captura de los datos
 
 import streamlit as st
-import pandas as pd
 
 st.title('Prediccion tipo de cliente Rapident')
 Canal_preferido = st.selectbox('Canal preferido', ['Ventas digitales', 'Punto de venta'])
@@ -82,4 +54,31 @@ Cat_preferida = st.selectbox('Cat preferida', ['Acrilicos y flexibles', 'blanque
 datos =[[Canal_preferido,Ticket_promedio,Acrilicos_y_flexibles, Blanqueamientos_y_profilaxis, Dientes, Equipos_y_accesorios, Higiene_diaria, Impresiones_y_vaciado,Instrumental_e_insumos,Ortodoncia, Restauracion,Laboratorio, discos_y_pulidos,Desechables_y_desinfeccion, Especializacion, Cat_preferida]]
 column_names = ['Canal_preferido', 'Ticket_promedio', 'Acrilicos_y_flexibles', 'Blanqueamientos_y_profilaxis', 'Dientes', 'Equipos_y_accesorios', 'Higiene_diaria', 'Impresiones_y_vaciado', 'Instrumental_e_insumos', 'Ortodoncia', 'Restauracion', 'Laboratorio', 'discos_y_pulidos', 'Desechables_y_desinfeccion', 'Especializacion', 'Cat_preferida']
 data = pd.DataFrame(datos, columns=column_names)
+
+#Se realiza la preparación
+data_preparada = pd.get_dummies(data_preparada, columns=['Canal preferido'], drop_first=False)
+data_preparada= pd.get_dummies(data_preparada, columns=['Cat preferida'], drop_first=False) #En despliegue no se borran dummies
+data_preparada.head()
+
+#Se adicionan las columnas faltantes
+data_preparada=data_preparada.reindex(columns=variables,fill_value=0)
+data_preparada.head()
+
+data_preparada[['Ticket promedio']]=min_max_scaler.transform(data_preparada[['Ticket promedio']])
+data_preparada.head()
+
+#Hacemos la predicción con Knn
+Y_fut = modelKnn.predict(data_preparada)
+data['Knn']=labelencoder.inverse_transform(Y_fut)
+data.head()
+
+#Hacemos la predicción con Red Neuronal
+Y_fut = modelNN.predict(data_preparada)
+data['Neural_Network']=labelencoder.inverse_transform(Y_fut)
+data.head()
+
+#Hacemos la predicción con SVM
+Y_fut = modelSVM.predict(data_preparada)
+data['SVM']=labelencoder.inverse_transform(Y_fut)
+data
 
