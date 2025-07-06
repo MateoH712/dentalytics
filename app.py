@@ -91,6 +91,3 @@ Cat_preferida = st.selectbox('Cat preferida', ['Acrilicos y flexibles', 'blanque
 datos =[[Canal_preferido,Ticket_promedio,Acrilicos_y_flexibles, Blanqueamientos_y_profilaxis, Dientes, Equipos_y_accesorios, Higiene_diaria, Impresiones_y_vaciado,Instrumental_e_insumos,Ortodoncia, Restauracion,Laboratorio, discos_y_pulidos,Desechables_y_desinfeccion, Especializacion, Cat_preferida]]
 data = pd.DataFrame(datos, columns=['Canal_preferido','Ticket_promedio', 'Acrilicos_y_flexibles', 'Blanqueamientos_y_profilaxis', 'Dientes', 'Equipos_y_accesorios', 'Higiene_diaria', 'Impresiones_y_vaciado', 'Instrumental_e_insumos', 'Ortodoncia', 'Restauracion', 'Laboratorio', 'discos_y_pulidos', 'Desechables_y_desinfeccion' , 'Especializacion', 'Cat_preferida'])
 
-
-
-!pip install streamlit
