@@ -61,26 +61,36 @@ data
 #Se crea interfaz gráfica con streamlit para captura de los datos
 
 import streamlit as st
+import pandas as pd
 
 st.title('Prediccion tipo de cliente Rapident')
-Canal preferido = st.selectbox('Canal preferido', ['Ventas digitales', 'Punto de venta'])
-Ticket promedio = st.number_input('Ticket promedio', min_value=14, max_value=52, value=20, step=1)
-Acrilicos y flexibles = st.selectbox('Acrilicos y flexibles', ['0', '1'])
-Blanqueamientos y profilaxis = st.selectbox('Blanqueamientos y profilaxis', ['0', '1'])
+Canal_preferido = st.selectbox('Canal preferido', ['Ventas digitales', 'Punto de venta'])
+Ticket_promedio = st.number_input('Ticket promedio', min_value=14, max_value=52, value=20, step=1)
+Acrilicos_y_flexibles = st.selectbox('Acrilicos y flexibles', ['0', '1'])
+Blanqueamientos_y_profilaxis = st.selectbox('Blanqueamientos y profilaxis', ['0', '1'])
 Dientes = st.selectbox('Dientes', ['0', '1'])
-Equipos y accesorios = st.selectbox('equipos y accesorios', ['0', '1'])
-Higiene diaria = st.selectbox('higiene diaria', ['0', '1'])
-Impresiones y vaciado = st.selectbox('impresiones y vaciado', ['0', '1'])
-Instrumental e insumos = st.selectbox('instrumental e insumos', ['0', '1'])
+Equipos_y_accesorios = st.selectbox('equipos y accesorios', ['0', '1'])
+Higiene_diaria = st.selectbox('higiene diaria', ['0', '1'])
+Impresiones_y_vaciado = st.selectbox('impresiones y vaciado', ['0', '1'])
+Instrumental_e_insumos = st.selectbox('instrumental e insumos', ['0', '1'])
 Ortodoncia = st.selectbox('ortodoncia', ['0', '1'])
 Restauracion = st.selectbox('Restauracion', ['0', '1'])
 Laboratorio = st.selectbox('Laboratorio', ['0', '1'])
-discos y pulidos = st.selectbox('discos y pulidos', ['0', '1'])
-Desechables y desinfeccion = st.selectbox('Desechables y desinfeccion', ['0', '1'])
-Especializacion = st.slider('Especializacion', min_value=0.15 , max_value=1, value=0.5, step=0.01)
-Cat preferida = st.selectbox('Cat preferida', ['Acrilicos y flexibles', 'blanqueamientos y profilaxis', 'Dientes', 'equipos y accesorios', 'higiene diaria','impresiones y vaciado','instrumental e insumos','ortodoncia','restauracion','laboratorio','discos y pulidos','desechables y desinfeccion'])
+discos_y_pulidos = st.selectbox('discos y pulidos', ['0', '1'])
+Desechables_y_desinfeccion = st.selectbox('Desechables y desinfeccion', ['0', '1'])
+Especializacion = st.number_input(
+    'Especializacion',
+    min_value=0.15,
+    max_value=1.0,
+    value=0.5,
+    step=0.01
+)
+Cat_preferida = st.selectbox('Cat preferida', ['Acrilicos y flexibles', 'blanqueamientos y profilaxis', 'Dientes', 'equipos y accesorios', 'higiene diaria','impresiones y vaciado','instrumental e insumos','ortodoncia','restauracion','laboratorio','discos y pulidos','desechables y desinfeccion'])
 
 #dataframe
-datos =[[Canal preferido,Ticket promedio,Acrilicos y flexibles, Blanqueamientos y profilaxis, Dientes, Equipos y accesorios, Higiene diaria, Impresiones y vaciado,Instrumental e insumos,Ortodoncia, Restauracion,Laboratorio, discos y pulidos,Desechables y desinfeccion, Especializacion, Cat preferida]]
-data = pd.DataFrame(datos, columns=['Canal preferido','Ticket promedio,Acrilicos y flexibles', 'Blanqueamientos y profilaxis', 'Dientes', 'Equipos y accesorios', 'Higiene diaria', 'Impresiones y vaciado', 'Instrumental e insumos', 'Ortodoncia', 'Restauracion', 'Laboratorio', 'discos y pulidos', 'Desechables y desinfeccion' , 'Especializacion', 'Cat preferida'])
+datos =[[Canal_preferido,Ticket_promedio,Acrilicos_y_flexibles, Blanqueamientos_y_profilaxis, Dientes, Equipos_y_accesorios, Higiene_diaria, Impresiones_y_vaciado,Instrumental_e_insumos,Ortodoncia, Restauracion,Laboratorio, discos_y_pulidos,Desechables_y_desinfeccion, Especializacion, Cat_preferida]]
+data = pd.DataFrame(datos, columns=['Canal_preferido','Ticket_promedio', 'Acrilicos_y_flexibles', 'Blanqueamientos_y_profilaxis', 'Dientes', 'Equipos_y_accesorios', 'Higiene_diaria', 'Impresiones_y_vaciado', 'Instrumental_e_insumos', 'Ortodoncia', 'Restauracion', 'Laboratorio', 'discos_y_pulidos', 'Desechables_y_desinfeccion' , 'Especializacion', 'Cat_preferida'])
 
+
+
+!pip install streamlit
