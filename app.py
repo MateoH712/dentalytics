@@ -19,8 +19,8 @@ filename = 'modelo.pkl'
 modelTree,modelKnn, modelNN, modelSVM, labelencoder,variables,min_max_scaler = pickle.load(open(filename, 'rb'))
 
 #Cargamos los datos futuros
-data = pd.read_excel("Clientes_dentalyticsfuturos.xlsx")
-data.head()
+#data = pd.read_excel("Clientes_dentalyticsfuturos.xlsx")
+#data.head()
 
 #Se realiza la preparación
 data_preparada = pd.get_dummies(data, columns=['Canal preferido'], drop_first=False)
